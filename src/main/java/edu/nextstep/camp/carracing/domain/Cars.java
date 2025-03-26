@@ -8,20 +8,22 @@ import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> values;
+    private final NumberGenerator generator;
 
-    public Cars(List<Car> cars) {
+    public Cars(List<Car> cars, NumberGenerator generator) {
         this.values = cars;
+        this.generator = generator;
     }
 
-    public static Cars fromNames(List<String> carNames) {
+    public static Cars fromNames(List<String> carNames, NumberGenerator generator) {
         List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
-        return new Cars(cars);
+        return new Cars(cars, generator);
     }
 
-    public void moveCars(NumberGenerator generator) {
+    public void moveCars() {
         for (Car car : this.values) {
             car.move(generator.generateNumber());
         }

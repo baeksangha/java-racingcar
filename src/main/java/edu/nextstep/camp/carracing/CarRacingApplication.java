@@ -14,11 +14,11 @@ public class CarRacingApplication {
         List<String> carNames = inputCarNames();
         int tryCount = getTryCount();
 
-        Cars cars = Cars.fromNames(carNames);
+        Cars cars = Cars.fromNames(carNames, new RandomNumberGenerator(10));
 
         ResultView.printResultMessage();
         for (int i = 0; i < tryCount; i++) {
-            cars.moveCars(new RandomNumberGenerator(10));
+            cars.moveCars();
             ResultView.printCarsStatus(cars);
         }
         ResultView.printWinners(cars.getWinners());

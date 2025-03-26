@@ -3,6 +3,7 @@ package edu.nextstep.camp.carracing;
 import edu.nextstep.camp.carracing.domain.Car;
 import edu.nextstep.camp.carracing.domain.Cars;
 import edu.nextstep.camp.carracing.domain.Position;
+import edu.nextstep.camp.carracing.util.FixedNumberGenerator;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -15,7 +16,7 @@ class WinnersTest {
         Car car1 = new Car("car1", new Position(2));
         Car car2 = new Car("car2", new Position(1));
         Car car3 = new Car("car3", new Position(3));
-        Cars cars = new Cars(List.of(car1, car2, car3));
+        Cars cars = new Cars(List.of(car1, car2, car3), new FixedNumberGenerator(10));
 
         assertThat(cars.getWinners()).containsExactly("car3");
     }
@@ -27,7 +28,7 @@ class WinnersTest {
         Car car3 = new Car("car3", new Position(3));
         Car car4 = new Car("car4", new Position(3));
         Car car5 = new Car("car5", new Position(3));
-        Cars cars = new Cars(List.of(car1, car2, car3, car4, car5));
+        Cars cars = new Cars(List.of(car1, car2, car3, car4, car5), new FixedNumberGenerator(10));
 
         assertThat(cars.getWinners()).containsExactly("car3", "car4", "car5");
     }

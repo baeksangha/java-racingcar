@@ -13,11 +13,10 @@ class CarsTest {
     @CsvSource(value = {"1,0", "4,1"})
     void 차량_이동_테스트(int number, int expectedPosition) {
         // Given
-        Cars cars = new Cars(List.of(new Car("car1"), new Car("car2")));
+        Cars cars = new Cars(List.of(new Car("car1"), new Car("car2")), new FixedNumberGenerator(number));
 
         // When
-        FixedNumberGenerator generator = new FixedNumberGenerator(number);
-        cars.moveCars(generator);
+        cars.moveCars();
 
         // Then
         for (Car car : cars.getValues()) {
